@@ -186,36 +186,16 @@ function Home() {
     
   }
   const CalculateWinner=()=>{
-    console.log(wi);
-    let temp=wi[0];
-    console.log(wi)
-    if((wi[0].Vote==0&&wi[1].Vote==0&&wi[2].Vote==0&&wi[3].Vote==0)){
-      temp={
-        name:"___"
-      }  
-   
-  }
-  else{
-       if((wi[0].Vote==wi[1].Vote||wi[0].Vote==wi[2].Vote||wi[0].Vote==wi[3].Vote)||(wi[1].Vote==wi[0].Vote||wi[1].Vote==wi[2].Vote||wi[1].Vote==wi[3].Vote)||(wi[2].Vote==wi[0].Vote||wi[1].Vote==wi[2].Vote||wi[2].Vote==wi[3].Vote)||(wi[3].Vote==wi[0].Vote||wi[3].Vote==wi[2].Vote||wi[1].Vote==wi[3].Vote)){
-
-        temp={
-          name:"no one"
+    let maxVotes = 0;
+    let maxVotesName = '';
+    wi.forEach(function(element) {
+        if (element.Vote > maxVotes) {
+            maxVotes = element.Vote;
+            maxVotesName = element.name;
         }
-       }
-       else{
-        for(let i=1;i<wi.length;i++){
-          if(temp.Vote>wi[i].Vote){
-            continue;
-          }
-          else{
-            temp=wi[i]
-          }
-        } 
-        
-       }
-  }
-  setWinner(temp)   
-
+    });
+  setWinner(maxVotesName);   
+    
   }
  
   console.log(Auth.Gender)
